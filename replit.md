@@ -3,6 +3,7 @@
 ## Overview
 
 pnpm workspace monorepo using TypeScript. Each package manages its own dependencies.
+Also contains a standalone Python + Streamlit app (`ai-interview-simulator/`).
 
 ## Stack
 
@@ -15,6 +16,32 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 - **Validation**: Zod (`zod/v4`), `drizzle-zod`
 - **API codegen**: Orval (from OpenAPI spec)
 - **Build**: esbuild (CJS bundle)
+
+## AI Interview Simulator (`ai-interview-simulator/`)
+
+A standalone Python + Streamlit app.
+
+- **Language**: Python 3.11
+- **UI**: Streamlit (port 5000)
+- **AI**: OpenAI GPT via Replit AI Integrations proxy
+- **Charts**: Plotly
+- **Run**: `cd ai-interview-simulator && streamlit run app.py --server.port 5000`
+
+### Module structure
+
+| File | Purpose |
+|------|---------|
+| `app.py` | Main Streamlit app (3 tabs: Interview, Results, Dashboard) |
+| `modules/config.py` | Roles, difficulty levels, constants |
+| `modules/session_manager.py` | Session state management |
+| `modules/question_generator.py` | OpenAI question generation |
+| `modules/answer_evaluator.py` | OpenAI answer evaluation & scoring |
+| `modules/dashboard.py` | Plotly chart rendering |
+
+### AI Integration
+
+Uses `AI_INTEGRATIONS_OPENAI_BASE_URL` and `AI_INTEGRATIONS_OPENAI_API_KEY` env vars
+(auto-provisioned by Replit AI Integrations — no manual key needed on Replit).
 
 ## Key Commands
 
