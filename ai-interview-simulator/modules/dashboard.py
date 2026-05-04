@@ -20,7 +20,7 @@ def _score_color(score: float) -> str:
         return "#e74c3c"   # red
 
 
-def render_score_gauge(score: float, label: str = "Overall Score"):
+def render_score_gauge(score: float, label: str = "Overall Score", key: str = "gauge"):
     """Render a gauge chart showing a single score value."""
     fig = go.Figure(go.Indicator(
         mode="gauge+number",
@@ -43,10 +43,10 @@ def render_score_gauge(score: float, label: str = "Overall Score"):
         },
     ))
     fig.update_layout(height=260, margin=dict(t=40, b=10, l=20, r=20))
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, key=key)
 
 
-def render_dimension_radar(evaluations: list[dict]):
+def render_dimension_radar(evaluations: list[dict], key: str = "radar"):
     """Render a radar chart showing average scores across evaluation dimensions."""
     if not evaluations:
         return
@@ -76,10 +76,10 @@ def render_dimension_radar(evaluations: list[dict]):
         height=350,
         margin=dict(t=60, b=20, l=40, r=40),
     )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, key=key)
 
 
-def render_per_question_scores(evaluations: list[dict], questions: list[str]):
+def render_per_question_scores(evaluations: list[dict], questions: list[str], key: str = "per_question"):
     """Render a bar chart showing the overall score for each question."""
     if not evaluations:
         return
@@ -105,10 +105,10 @@ def render_per_question_scores(evaluations: list[dict], questions: list[str]):
         height=320,
         margin=dict(t=50, b=30, l=40, r=20),
     )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, key=key)
 
 
-def render_history_chart(history: list[dict]):
+def render_history_chart(history: list[dict], key: str = "history"):
     """
     Render a line chart of overall scores across past sessions.
     Each point is one completed interview session.
@@ -119,7 +119,7 @@ def render_history_chart(history: list[dict]):
 
     df = pd.DataFrame([
         {
-            "Session": f"#{i+1}\n{h.get('role', '')}\n({h.get('difficulty', '')})",
+            "Session": f"#{i+1} {h.get('role', '')} ({h.get('difficulty', '')})",
             "Score": h.get("overall_score", 0),
             "Role": h.get("role", ""),
             "Difficulty": h.get("difficulty", ""),
@@ -141,7 +141,7 @@ def render_history_chart(history: list[dict]):
         height=350,
         margin=dict(t=50, b=40, l=40, r=20),
     )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, key=key)
 
 
 def render_strengths_weaknesses(strengths: list[str], weaknesses: list[str]):

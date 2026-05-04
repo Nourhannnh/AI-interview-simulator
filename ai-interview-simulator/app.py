@@ -220,14 +220,14 @@ with tab_results:
         # --- Overall score gauge + radar ---
         col_gauge, col_radar = st.columns(2)
         with col_gauge:
-            render_score_gauge(summary["overall_score"], "Overall Score")
+            render_score_gauge(summary["overall_score"], "Overall Score", key="results_gauge")
         with col_radar:
-            render_dimension_radar(evals)
+            render_dimension_radar(evals, key="results_radar")
 
         st.divider()
 
         # --- Per-question breakdown ---
-        render_per_question_scores(evals, questions)
+        render_per_question_scores(evals, questions, key="results_per_question")
         st.divider()
 
         # --- Detailed per-question accordion ---
@@ -296,7 +296,7 @@ with tab_dashboard:
         st.divider()
 
         # Progress over time
-        render_history_chart(history)
+        render_history_chart(history, key="dashboard_history")
         st.divider()
 
         # Latest session breakdown
@@ -304,9 +304,9 @@ with tab_dashboard:
         st.subheader(f"Latest Session — {latest['role']} ({latest['difficulty']})")
         col_g, col_r = st.columns(2)
         with col_g:
-            render_score_gauge(latest["overall_score"], "Latest Overall Score")
+            render_score_gauge(latest["overall_score"], "Latest Overall Score", key="dashboard_gauge")
         with col_r:
-            render_dimension_radar(latest["evaluations"])
+            render_dimension_radar(latest["evaluations"], key="dashboard_radar")
 
         st.divider()
         render_strengths_weaknesses(latest["strengths"], latest["weaknesses"])
