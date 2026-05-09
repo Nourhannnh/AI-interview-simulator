@@ -11,13 +11,30 @@ from modules.config import AI_MODEL, AI_MAX_TOKENS, QUESTIONS_PER_SESSION
 
 def _get_client() -> openai.OpenAI:
     """
-    Build an OpenAI client pointed at Replit's AI Integrations proxy.
-    The proxy injects a real key at runtime via the env vars set during setup.
+    Build an OpenAI client using whichever credentials are available:
+
+    Priority order:
+      1. Replit AI Integrations proxy  — AI_INTEGRATIONS_OPENAI_BASE_URL +
+                                         AI_INTEGRATIONS_OPENAI_API_KEY
+         (auto-provisioned on Replit; no key needed from the user)
+      2. Standard OpenAI key           — OPENAI_API_KEY
+         (set this in .env or your hosting platform's secrets manager)
     """
-    return openai.OpenAI(
-        base_url=os.environ.get("AI_INTEGRATIONS_OPENAI_BASE_URL", "https://api.openai.com/v1"),
-        api_key=os.environ.get("AI_INTEGRATIONS_OPENAI_API_KEY", ""),
-    )
+    replit_base_url = os.environ.get("AI_INTEGRATIONS_OPENAI_BASE_URL")
+    replit_api_key  = os.environ.get("AI_INTEGRATIONS_OPENAI_API_KEY")
+
+    if replit_base_url and replit_api_key:
+        # Running on Replit — use the managed proxy
+        return openai.OpenAI(base_url=replit_base_url, api_key=replit_api_key)
+
+    # Running locally or on Streamlit Cloud — use the standard key
+    standard_key = os.environ.get("OPENAI_API_KEY", "")
+    if not standard_key:
+        raise EnvironmentError(
+            "No OpenAI credentials found. "
+            "Set OPENAI_API_KEY in your environment or .env file."
+        )
+    return openai.OpenAI(api_key=standard_key)
 
 
 def generate_questions(role: str, difficulty: str) -> list[str]:

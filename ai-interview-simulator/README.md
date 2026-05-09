@@ -58,25 +58,27 @@ pip install -r requirements.txt
 
 ### 3. Set environment variables
 
-Create a `.env` file (never commit this):
+Copy the example file and add your key:
+
+```bash
+cp .env.example .env
+```
+
+Then open `.env` and set your key:
 
 ```env
 OPENAI_API_KEY=sk-...
 ```
 
-Or export it in your shell:
+The app automatically detects which credentials to use:
 
-```bash
-export OPENAI_API_KEY="sk-..."
-```
+| Environment | What to do |
+|-------------|-----------|
+| **Local** | Set `OPENAI_API_KEY` in `.env` |
+| **Streamlit Cloud** | Add `OPENAI_API_KEY` in the Secrets manager |
+| **Replit** | Nothing — keys are injected automatically |
 
-Then update `question_generator.py` and `answer_evaluator.py` to use:
-
-```python
-api_key=os.environ.get("OPENAI_API_KEY", "")
-```
-
-> **Note:** When running on Replit, API access is handled automatically via Replit AI Integrations — no key needed.
+> `.env` is listed in `.gitignore` and will never be committed.
 
 ### 4. Run the app
 
