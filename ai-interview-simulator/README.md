@@ -4,8 +4,6 @@ Preparing for technical interviews can feel random and stressful — this projec
 
 This is a **Python + Streamlit web app** that simulates technical interviews using AI. It generates role-specific questions, evaluates your answers, and helps you understand where you stand and how to improve.
 
----
-
 ## 🚀 What this project does
 
 Instead of just practicing questions blindly, you can:
@@ -14,8 +12,6 @@ Instead of just practicing questions blindly, you can:
 - Answer them in real-time  
 - Receive **detailed AI feedback** on your performance  
 - Track your progress over multiple sessions  
-
----
 
 ## 🧠 Features
 
@@ -41,8 +37,6 @@ Instead of just practicing questions blindly, you can:
 - **Clean, Modular Codebase**  
   Organized structure with separated logic for scalability and readability.
 
----
-
 ## 💼 Supported Roles
 
 - Software Engineer  
@@ -54,8 +48,6 @@ Instead of just practicing questions blindly, you can:
 - Data Engineer  
 - Technical Product Manager  
 
----
-
 ## 🛠 Tech Stack
 
 | Layer | Technology |
@@ -65,8 +57,6 @@ Instead of just practicing questions blindly, you can:
 | Data | Pandas |
 | Visualization | Plotly |
 | Language | Python 3.11+ |
-
----
 
 ## 📁 Project Structure
 
@@ -84,8 +74,6 @@ ai-interview-coach/
 │   └── dashboard.py
 └── .gitignore
 ```
-
----
 
 ## ⚙️ How to run locally
 
@@ -110,14 +98,10 @@ OPENAI_API_KEY=your_key_here
 
 > The `.env` file is ignored by git and won't be uploaded.
 
----
-
 ### 4. Run the app
 ```
 streamlit run app.py
 ```
-
----
 
 ## ☁️ Deployment (Streamlit Cloud)
 
@@ -127,8 +111,6 @@ streamlit run app.py
 4. Add your `OPENAI_API_KEY` in secrets  
 5. Deploy 🚀  
 
----
-
 ## 📊 How scoring works
 
 Each answer is evaluated based on:
@@ -137,19 +119,13 @@ Each answer is evaluated based on:
 - **Clarity (25%)** → Is it well-structured and easy to follow?  
 - **Depth (25%)** → Does it show deeper understanding?  
 
----
-
 ## 💡 Why I built this
 
 I wanted a way to practice interviews that goes beyond static questions — something interactive that actually **helps you improve**, not just test you.
 
----
-
 ## Note
 
 This project can be run locally using Streamlit. Deployment is not included due to platform limitations, but the full functionality is available in the codebase.
-
----
 
 ## 📄 License
 
