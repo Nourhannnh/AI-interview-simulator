@@ -1,4 +1,4 @@
-# AI Interview Coach for Tech Roles
+# AI Interview Simulator for Tech Roles
 
 Preparing for technical interviews can feel random and stressful — this project aims to make it more structured and realistic.
 
@@ -61,7 +61,7 @@ Instead of just practicing questions blindly, you can:
 ## 📁 Project Structure
 
 ```
-ai-interview-coach/
+ai-interview-simulator/
 ├── app.py
 ├── requirements.txt
 ├── .streamlit/
@@ -80,7 +80,7 @@ ai-interview-coach/
 ### 1. Clone the repo
 ```
 git clone <your-repo-url>
-cd ai-interview-coach
+cd ai-interview-simulator
 ```
 
 ### 2. Install dependencies
