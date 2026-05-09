@@ -59,3 +59,16 @@ replit.md
 uv.lock
 pyproject.toml
 main.py
+
+# Workspace-level files — not part of the app
+artifacts/
+lib/
+scripts/
+attached_assets/
+pnpm-lock.yaml
+pnpm-workspace.yaml
+.npmrc
+tsconfig.base.json
+tsconfig.json
+package.json
+.streamlit/
