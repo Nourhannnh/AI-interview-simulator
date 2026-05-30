@@ -10,15 +10,15 @@ Built with Python and Streamlit, powered by OpenAI.
 
 ## What it does
 
-Select from 10 tech roles — Software Engineer, Data Scientist, ML Engineer, Frontend Developer, Backend Developer, and more — across three difficulty levels: Junior, Mid-level, and Senior.
+Select from 10 tech roles: Software Engineer, Data Scientist, ML Engineer, Frontend Developer, Backend Developer, and more — across three difficulty levels: Junior, Mid-level, and Senior.
 
 Each session runs 5 questions. After each answer, the AI scores it on three dimensions:
 
-- **Correctness** — was it technically accurate?
-- **Clarity** — was it well-structured and easy to follow?
-- **Depth** — did you show real understanding or just surface knowledge?
+- **Correctness**: was it technically accurate?
+- **Clarity**: was it well-structured and easy to follow?
+- **Depth**: did you show real understanding or just surface knowledge?
 
-Overall score is a weighted average: 50% correctness, 25% clarity, 25% depth. At the end you get a full breakdown — what you did well, what to improve, and a model answer for each question.
+Overall score is a weighted average: 50% correctness, 25% clarity, 25% depth. At the end you get a full breakdown, what you did well, what to improve, and a model answer for each question.
 
 The Dashboard tab tracks your scores across sessions so you can see whether you're actually improving.
 
@@ -36,7 +36,7 @@ The Dashboard tab tracks your scores across sessions so you can see whether you'
 
 ```
 ai-interview-simulator/
-├── app.py                      # Main Streamlit app — all UI and tab logic
+├── app.py                      # Main Streamlit app, all UI and tab logic
 ├── modules/
 │   ├── config.py               # Roles, difficulty levels, scoring weights, model config
 │   ├── question_generator.py   # Calls OpenAI to generate role-specific questions
@@ -79,6 +79,6 @@ streamlit run app.py
 
 ## How the AI works
 
-**Question generation:** sends the role, difficulty, and number of questions to OpenAI and asks for a JSON array of strings back. Nothing hardcoded — questions are generated fresh every session.
+**Question generation:** sends the role, difficulty, and number of questions to OpenAI and asks for a JSON array of strings back. Nothing hardcoded, questions are generated fresh every session.
 
-**Answer evaluation:** sends the role, difficulty, question, and answer to OpenAI and asks for a structured JSON response with correctness, clarity, and depth scores, a verdict, strengths, improvement suggestions, and a model answer. The overall score is computed in Python using fixed weights — not by the model — so the math is always consistent regardless of what the model returns.
+**Answer evaluation:** sends the role, difficulty, question, and answer to OpenAI and asks for a structured JSON response with correctness, clarity, and depth scores, a verdict, strengths, improvement suggestions, and a model answer. The overall score is computed in Python using fixed weights, not by the model, so the math is always consistent regardless of what the model returns.
