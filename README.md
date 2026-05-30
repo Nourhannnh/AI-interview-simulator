@@ -10,7 +10,7 @@ Built with Python and Streamlit, powered by OpenAI.
 
 ## What it does
 
-Select from 10 tech roles: Software Engineer, Data Scientist, ML Engineer, Frontend Developer, Backend Developer, and more — across three difficulty levels: Junior, Mid-level, and Senior.
+Select from 10 tech roles: Software Engineer, Data Scientist, ML Engineer, Frontend Developer, Backend Developer, and more... across three difficulty levels: Junior, Mid-level, and Senior.
 
 Each session runs 5 questions. After each answer, the AI scores it on three dimensions:
 
